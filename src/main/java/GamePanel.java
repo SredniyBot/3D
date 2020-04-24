@@ -10,9 +10,12 @@ public class GamePanel extends JPanel {
 
     public void paint(Graphics g){
         g.setColor(Color.BLACK);
-        g.fillRect(0,0,10000,1000);
+        g.fillRect(0,0,SizeX,SizeY);
         PlayerList.update();
         PlayerList.paint3d(g);
+        g.drawImage(Book.paintBook(),(int)(-SizeX/9+Math.sin(Math.toRadians(Player.deltaX))*10),(int)(SizeY*2/3+Math.cos(Math.toRadians(Player.deltaX))*10),SizeX*4/9,SizeY*4/9,null);
+        g.drawImage(light.paintLight(),(int)(SizeX*8/9+Math.cos(Math.toRadians(Player.deltaX))*10),(int)(SizeY*2/3+Math.cos(Math.toRadians(Player.deltaX))*10),SizeX/9,SizeY*4/9,null);
+
         if(KeyBoard.getInstance().isKeyDown(77)){
             g.drawImage(paintMap(),0,0,SizeX,SizeY,null);
         }else{
